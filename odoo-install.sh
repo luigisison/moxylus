@@ -86,12 +86,11 @@ sudo apt-get install python-gevent -y
 echo -e "\n--- Create symlink for node"
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
-#--------------------------------------------------
-# Install pytz
-#--------------------------------------------------
+echo -e "\n---- Install pytz ----"
 sudo chown moxylus: /usr/local/lib/python2.7/dist-packages/
 chmod u_w /usr/local/lib/python2.7/dist-packages/
 easy_install --upgrade pytz
+
 #--------------------------------------------------
 # Install Wkhtmltopdf if needed
 #--------------------------------------------------
