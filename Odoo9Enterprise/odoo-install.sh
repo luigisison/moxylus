@@ -5,6 +5,7 @@
 # Original Source: http://www.odoo.yenthevg.com/installing-odoo-9-enterprise-on-ubuntu-14-04/
 #-------------------------------------------------------------------------------
 # This script will install Odoo Enterprise on your Ubuntu 14.04 server.
+# Installation of enterprise programs requires an Odoo-approved Github username and password.
 # It can install multiple Odoo instances in one Ubuntu because of the different xmlrpc_ports.
 #-------------------------------------------------------------------------------
 # Go to Ubuntu directory where you want to install the software. For example:
