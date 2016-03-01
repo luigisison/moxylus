@@ -5,7 +5,7 @@
 # Original Source: http://www.odoo.yenthevg.com/installing-odoo-9-on-ubuntu-14-04/
 #-------------------------------------------------------------------------------
 # This script will install Odoo Community on your Ubuntu 14.04 server.
-# in one Ubuntu because of the different xmlrpc_ports
+# It can install multiple Odoo instances in one Ubuntu because of the different xmlrpc_ports.
 #-------------------------------------------------------------------------------
 # Make a new file:
 # sudo nano odoo-install.sh
