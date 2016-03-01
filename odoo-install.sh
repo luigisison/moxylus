@@ -1,6 +1,6 @@
 #!/bin/bash
 ################################################################################
-# Script for installing Odoo V9 on Ubuntu 14.04 LTS (could be used for other version too)
+# Script for installing Odoo V9 on Ubuntu 14.04 LTS (could be used for other versions too)
 # Original Author: Yenthe Van Ginneken; Additions: Luigi Sison
 # Original Source: http://www.odoo.yenthevg.com/installing-odoo-9-enterprise-on-ubuntu-14-04/
 #-------------------------------------------------------------------------------
