@@ -1,14 +1,19 @@
 #!/bin/bash
 ################################################################################
 # Script for installing Odoo V9 on Ubuntu 14.04 LTS (could be used for other version too)
-# Author: Yenthe Van Ginneken
+# Original Author: Yenthe Van Ginneken; Additions: Luigi Sison
+# Original Source: http://www.odoo.yenthevg.com/installing-odoo-9-enterprise-on-ubuntu-14-04/
 #-------------------------------------------------------------------------------
-# This script will install Odoo on your Ubuntu 14.04 server. It can install multiple Odoo instances
-# in one Ubuntu because of the different xmlrpc_ports
+# This script will install Odoo Enterprise on your Ubuntu 14.04 server.
+# It can install multiple Odoo instances in one Ubuntu because of the different xmlrpc_ports.
 #-------------------------------------------------------------------------------
-# Make a new file:
+# Go to Ubuntu directory where you want to install the software. For example:
+# cd /opt
+# Place this script in the directory:
+# sudo wget https://github.com/luigisison/moxylus/edit/master/odoo-install.sh
+# (Optional) Edit the file to change parameters:
 # sudo nano odoo-install.sh
-# Place this content in it and then make the file executable:
+# Save changes and then make the file executable:
 # sudo chmod +x odoo-install.sh
 # Execute the script to install Odoo:
 # ./odoo-install
@@ -43,9 +48,6 @@ WKHTMLTOX_X32=http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2
 # Update Server
 #--------------------------------------------------
 echo -e "\n---- Update Server ----"
-
-
-
 sudo apt-get update
 sudo apt-get upgrade -y
 
@@ -59,7 +61,7 @@ echo -e "\n---- Creating the ODOO PostgreSQL User  ----"
 sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 
 #--------------------------------------------------
-# Install Dependencies
+# Install Python and Dependencies
 #--------------------------------------------------
 echo -e "\n---- Install tool packages ----"
 sudo apt-get install wget subversion git bzr bzrtools python-pip gdebi-core -y
@@ -78,12 +80,12 @@ ttf-dejavu python-pil -y
 echo -e "\n---- Install python libraries ----"
 sudo pip install gdata psycogreen
 
-echo -e "\n--- Install other required packages"
+echo -e "\n--- Install other required packages ----"
 sudo apt-get install node-clean-css -y
 sudo apt-get install node-less -y
 sudo apt-get install python-gevent -y
 
-echo -e "\n--- Create symlink for node"
+echo -e "\n--- Create symlink for node ----"
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 echo -e "\n---- Install pytz ----"
@@ -251,4 +253,8 @@ echo "Start Odoo service: sudo service $OE_CONFIG start"
 echo "Stop Odoo service: sudo service $OE_CONFIG stop"
 echo "Restart Odoo service: sudo service $OE_CONFIG restart"
 echo "-----------------------------------------------------------"
+# Exit Ubuntu. Reset Adapter 1 Settings to Bridged Adapter in Settings>Network
+# Identify host address: ifconfig
+# Restart Ubuntu. Start Odoo service
+# Access Odoo through Browser at: hostaddress:8069
 
