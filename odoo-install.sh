@@ -256,5 +256,5 @@ echo "-----------------------------------------------------------"
 # Exit Ubuntu. Reset Adapter 1 Settings to Bridged Adapter in Settings>Network
 # Identify host address: ifconfig
 # Restart Ubuntu. Start Odoo service
-# Access Odoo through Browser at: hostaddress:8069
+# Access Odoo through Browser at: localhost:8069
 
