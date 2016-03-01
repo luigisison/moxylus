@@ -7,12 +7,16 @@
 # This script will install Odoo Community on your Ubuntu 14.04 server.
 # It can install multiple Odoo instances in one Ubuntu because of the different xmlrpc_ports.
 #-------------------------------------------------------------------------------
-# Make a new file:
+# Go to Ubuntu directory where you want to install the software. For example:
+# cd /opt
+# Place this script in the directory:
+# sudo wget https://raw.githubusercontent.com/luigisison/moxylus/master/odoo-install.sh
+# (Optional) Edit the file to change parameters:
 # sudo nano odoo-install.sh
-# Place this content in it and then make the file executable:
+# Save changes and then make the file executable:
 # sudo chmod +x odoo-install.sh
 # Execute the script to install Odoo:
-# ./odoo-install
+# ./odoo-install.sh
 ################################################################################
  
 ##fixed parameters
