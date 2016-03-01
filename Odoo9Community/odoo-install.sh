@@ -248,3 +248,7 @@ echo "Start Odoo service: sudo service $OE_CONFIG start"
 echo "Stop Odoo service: sudo service $OE_CONFIG stop"
 echo "Restart Odoo service: sudo service $OE_CONFIG restart"
 echo "-----------------------------------------------------------"
+# Exit Ubuntu. Reset Adapter 1 Settings to Bridged Adapter in Settings>Network
+# Identify host address: ifconfig
+# Restart Ubuntu. Start Odoo service
+# Access Odoo through Browser at: localhost:8069
