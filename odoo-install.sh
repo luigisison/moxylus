@@ -10,7 +10,7 @@
 # Go to Ubuntu directory where you want to install the software. For example:
 # cd /opt
 # Place this script in the directory:
-# sudo wget https://github.com/luigisison/moxylus/edit/master/odoo-install.sh
+# sudo wget https://raw.githubusercontent.com/luigisison/moxylus/master/odoo-install.sh
 # (Optional) Edit the file to change parameters:
 # sudo nano odoo-install.sh
 # Save changes and then make the file executable:
