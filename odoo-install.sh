@@ -90,7 +90,7 @@ sudo ln -s /usr/bin/nodejs /usr/bin/node
 
 echo -e "\n---- Install pytz ----"
 sudo chown moxylus: /usr/local/lib/python2.7/dist-packages/
-chmod u_w /usr/local/lib/python2.7/dist-packages/
+chmod u+w /usr/local/lib/python2.7/dist-packages/
 easy_install --upgrade pytz
 
 #--------------------------------------------------
