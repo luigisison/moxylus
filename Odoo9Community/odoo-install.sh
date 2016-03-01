@@ -1,9 +1,10 @@
 #!/bin/bash
 ################################################################################
-# Script for installing Odoo V9 Community version on Ubuntu 14.04 LTS (could be used for other version too)
-# Original Author: Yenthe Van Ginneken. Additonal Author: Luigi Sison
+# Script for installing Odoo V9 on Ubuntu 14.04 LTS (could be used for other versions too)
+# Original Author: Yenthe Van Ginneken; Additions: Luigi Sison
+# Original Source: http://www.odoo.yenthevg.com/installing-odoo-9-enterprise-on-ubuntu-14-04/
 #-------------------------------------------------------------------------------
-# This script will install Odoo on your Ubuntu 14.04 server. It can install multiple Odoo instances
+# This script will install Odoo Community on your Ubuntu 14.04 server.
 # in one Ubuntu because of the different xmlrpc_ports
 #-------------------------------------------------------------------------------
 # Make a new file:
