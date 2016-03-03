@@ -36,6 +36,91 @@ OE_VERSION="9.0"
 OE_SUPERADMIN="admin"
 OE_CONFIG="${OE_USER}-server"
 
+##
+###  WKHTMLTOPDF download links
+## === Ubuntu Trusty x64 & x32 === (for other distributions please replace these two links,
+## in order to have correct version of wkhtmltox installed, for a danger note refer to 
+## https://www.odoo.com/documentation/8.0/setup/install.html#deb ):
+WKHTMLTOX_X64=http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+WKHTMLTOX_X32=http://download.gna.org/wkhtmltopdf/0.12/0.12.2.1/wkhtmltox-0.12.2.1_linux-trusty-i386.deb
+
+#--------------------------------------------------
+# Update Server
+#--------------------------------------------------
+echo -e "\n---- Update Server ----"
+sudo apt-get update
+sudo apt-get upgrade -y
+
+#--------------------------------------------------
+# Install PostgreSQL Server
+#--------------------------------------------------
+echo -e "\n---- Install PostgreSQL Server ----"
+sudo apt-get install postgresql -y
+
+echo -e "\n---- Creating the ODOO PostgreSQL User  ----"
+sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
+
+#--------------------------------------------------
+# Install Python and Dependencies
+#--------------------------------------------------
+echo -e "\n---- Install tool packages ----"
+sudo apt-get install wget subversion git bzr bzrtools python-pip gdebi-core -y
+	
+echo -e "\n---- Install python packages ----"
+sudo apt-get install python-dateutil python-feedparser python-ldap python-libxslt1 python-lxml \
+python-mako python-openid python-psycopg2 python-pybabel python-pychart python-pydot \
+python-pyparsing python-reportlab python-simplejson python-tz python-vatnumber \
+python-vobject python-webdav python-werkzeug python-xlwt python-yaml python-zsi \
+python-docutils python-psutil python-mock python-unittest2 python-jinja2 python-pypdf \
+python-decorator python-requests python-passlib python-argparse python-gdata \
+python-gevent python-greenlet python-imaging python-markupsafe python-qrcode \
+python-six python-suds python-usb python-wsgiref python-xlrd python-yaml \
+ttf-dejavu python-pil -y
+	
+echo -e "\n---- Install python libraries ----"
+sudo pip install gdata psycogreen
+
+echo -e "\n--- Install other required packages ----"
+sudo apt-get install node-clean-css -y
+sudo apt-get install node-less -y
+sudo apt-get install python-gevent -y
+
+echo -e "\n--- Create symlink for node ----"
+sudo ln -s /usr/bin/nodejs /usr/bin/node
+
+echo -e "\n---- Install pytz ----"
+sudo chown moxylus: /usr/local/lib/python2.7/dist-packages/
+chmod u+w /usr/local/lib/python2.7/dist-packages/
+easy_install --upgrade pytz
+
+#--------------------------------------------------
+# Install Wkhtmltopdf if needed
+#--------------------------------------------------
+if [ $INSTALL_WKHTMLTOPDF = "True" ]; then
+  echo -e "\n---- Install wkhtml and place shortcuts on correct place for ODOO 9 ----"
+  #pick up correct one from x64 & x32 versions:
+  if [ "`getconf LONG_BIT`" == "64" ];then
+      _url=$WKHTMLTOX_X64
+  else
+      _url=$WKHTMLTOX_X32
+  fi
+  sudo wget $_url
+  sudo gdebi --n `basename $_url`
+  sudo ln -s /usr/local/bin/wkhtmltopdf /usr/bin
+  sudo ln -s /usr/local/bin/wkhtmltoimage /usr/bin
+else
+  echo "Wkhtmltopdf isn't installed due to the choice of the user!"
+fi
+	
+echo -e "\n---- Create ODOO system user ----"
+sudo adduser --system --quiet --shell=/bin/bash --home=$OE_HOME --gecos 'ODOO' --group $OE_USER
+#The user should also be added to the sudo'ers group.
+sudo adduser $OE_USER sudo
+
+echo -e "\n---- Create Log directory ----"
+sudo mkdir /var/log/$OE_USER
+sudo chown $OE_USER:$OE_USER /var/log/$OE_USER
+
 #--------------------------------------------------
 # Install ODOO
 #--------------------------------------------------
