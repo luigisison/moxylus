@@ -11,6 +11,8 @@ sudo git clone --depth 1 --branch 8.0 https://github.com/OCA/department.git odoo
 sudo git clone --depth 1 --branch 8.0 https://github.com/odoomrp/odoomrp-wip.git odoo/custom/addons
 sudo git clone --depth 1 --branch 8.0 https://github.com/odoomrp/odoomrp-utils.git odoo/custom/addons/odoomrp-utils
 sudo git clone --depth 1 --branch 8.0 https://github.com/OCA/sale-workflow.git odoo/custom/addons/sale-workflow
+sudo git clone --depth 1 --branch 8.0 https://github.com/OCA/vertical-medical.git odoo/custom/addons/vertical-medical
+
 #--------------------------------------------------
 # Change server configuration file
 #--------------------------------------------------
