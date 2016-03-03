@@ -125,22 +125,22 @@ sudo chown $OE_USER:$OE_USER /var/log/$OE_USER
 #--------------------------------------------------
 # Install ODOO
 #--------------------------------------------------
-echo -e "\n==== Installing ODOO Server ===="
+echo -e "\n==== Install ODOO Server ===="
 sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/odoo $OE_HOME_EXT/
 
 echo -e "\n---- Create custom module directory ----"
 sudo su $OE_USER -c "mkdir $OE_HOME/enterprise"
 sudo su $OE_USER -c "mkdir $OE_HOME/enterprise/addons"
 
-echo -e "\n---- Adding Enterprise code under $OE_HOME/enterprise/addons ----"
+echo -e "\n---- Add Enterprise code under $OE_HOME/enterprise/addons ----"
 sudo git clone --depth 1 --branch $OE_VERSION https://www.github.com/odoo/enterprise "$OE_HOME/enterprise/addons"
 
-echo -e "\n---- Installing Enterprise specific libraries ----"
+echo -e "\n---- Install Enterprise specific libraries ----"
 sudo apt-get install nodejs npm
 sudo npm install -g less
 sudo npm install -g less-plugin-clean-css
 
-echo -e "\n---- Setting permissions on home folder ----"
+echo -e "\n---- Set permissions on home folder ----"
 sudo chown -R $OE_USER:$OE_USER $OE_HOME/*
 
 echo -e "* Create server config file"
@@ -160,7 +160,7 @@ sudo su root -c "echo 'sudo -u $OE_USER $OE_HOME_EXT/openerp-server --config=/et
 sudo chmod 755 $OE_HOME_EXT/start.sh
 
 #--------------------------------------------------
-# Adding ODOO as a deamon (initscript)
+# Add ODOO as a deamon (initscript)
 #--------------------------------------------------
 
 echo -e "* Create init file"
@@ -230,7 +230,7 @@ esac
 exit 0
 EOF
 
-echo -e "* Security Init File"
+echo -e "* Create Security Init File"
 sudo mv ~/$OE_CONFIG /etc/init.d/$OE_CONFIG
 sudo chmod 755 /etc/init.d/$OE_CONFIG
 sudo chown root: /etc/init.d/$OE_CONFIG
@@ -241,7 +241,7 @@ sudo su root -c "echo 'xmlrpc_port = $OE_PORT' >> /etc/${OE_CONFIG}.conf"
 echo -e "* Start ODOO on Startup"
 sudo update-rc.d $OE_CONFIG defaults
 
-echo -e "* Starting Odoo Service"
+echo -e "* Start Odoo Service"
 sudo su root -c "/etc/init.d/$OE_CONFIG start"
 echo "-----------------------------------------------------------"
 echo "Done! The Odoo server is up and running. Specifications:"
