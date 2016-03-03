@@ -258,4 +258,7 @@ echo "-----------------------------------------------------------"
 # Identify host address: ifconfig
 # Restart Ubuntu. Start Odoo service
 # Access Odoo through Browser at: localhost:8069
-
+#
+# Configuration: /opt: odoo-install.sh, wkhtmltox-0.12.2.1_linux-trusty-amd64.deb
+# Configuration: /odoo: enterprise, odoo-server
+# Configuration: /enterprise: addons
