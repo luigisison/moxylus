@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <openerp>
     <data>
-        <!-- Create form view -->
+        
+    <!-- Create access to Course --> 
+    
+        <!-- Create Course form view -->
         <record model="ir.ui.view" id="course_form_view">
             <field name="name">course.form</field>
             <field name="model">openacademy.course</field>
@@ -15,6 +18,7 @@
                         <group>
                             <field name="name"/>
                             <field name="description"/>
+                            <field name="responsible_id"/>
                         </group>
                         <!-- Create tab -->
                         <notebook>
@@ -30,7 +34,7 @@
             </field>
         </record>
         
-        <!-- Create search view -->
+        <!-- Create Course search view -->
         <record model="ir.ui.view" id="course_search_view">
             <field name="name">course.search</field>
             <field name="model">openacademy.course</field>
@@ -42,7 +46,19 @@
             </field>
         </record>
         
-        <!-- window action -->
+        <!-- override the automatically generated list view for courses -->
+        <record model="ir.ui.view" id="course_tree_view">
+            <field name="name">course.tree</field>
+            <field name="model">openacademy.course</field>
+            <field name="arch" type="xml">
+                <tree string="Course Tree">
+                    <field name="name"/>
+                    <field name="responsible_id"/>
+                </tree>
+            </field>
+        </record>
+        
+        <!-- Create Course window action -->
         <!--
             The following tag is an action definition for a "window action",
             that is an action opening a view or a set of views
@@ -87,12 +103,34 @@
                             <field name="start_date"/>
                             <field name="duration"/>
                             <field name="seats"/>
+                            <group string="General">
+                                <field name="course_id"/>
+                                <field name="name"/>
+                                <field name="instructor_id"/>
+                            </group>
+                            <group string="Schedule">
+                                <field name="start_date"/>
+                                <field name="duration"/>
+                                <field name="seats"/>
+                            </group>
                         </group>
                     </sheet>
                 </form>
             </field>
         </record>
     
+        <!-- Create Session tree/list view -->
+        <record model="ir.ui.view" id="session_tree_view">
+            <field name="name">session.tree</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <tree string="Session Tree">
+                    <field name="name"/>
+                    <field name="course_id"/>
+                </tree>
+            </field>
+        </record>
+        
         <!-- Create Session action -->
         <record model="ir.actions.act_window" id="session_list_action">
             <field name="name">Sessions</field>
