@@ -1,0 +1,156 @@
+<?xml version="1.0"?>
+<xpath expr="//form/sheet/notebook/page[@name='insurance']" position="after">
+                    <page string="Allergies">
+                        <group>
+                            <field name="allergy_deny"/>
+                        </group>
+                        <group col="6" colspan="6">
+                            <field name="allergy" colspan="6"/>
+                        </group>
+                        <group string="Family allergies" col="6" colspan="6">
+                            <field name="allergies_family" colspan="3"/>
+                            <field name="allergies_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="3" attrs="{'invisible': [('allergies_family', '=', False)]}"/>
+                        </group>
+                    </page>
+                    <page string="Record/History" name="record_history">
+                        <group col="6" colspan="6">
+                            <field name="direct_interrogation"/>
+                        </group>
+                        <newline/>
+                        <notebook colspan="6">
+                            <page string="Personal Records" name="personal_records">
+                                <group col="6" colspan="6">
+                                    <field name="diabetes" colspan="2"/>
+                                    <field name="diabetes_desc" colspan="4" attrs="{'invisible': [('diabetes', '=', False)]}"/>
+                                    <field name="hipertension" colspan="2"/>
+                                    <field name="hipertension_desc" colspan="4" attrs="{'invisible': [('hipertension', '=', False)]}"/>
+                                    <field name="cardiopathy" colspan="2"/>
+                                    <field name="cardiopathy_desc" colspan="4" attrs="{'invisible': [('cardiopathy', '=', False)]}"/>
+                                    <field name="cancer" colspan="2"/>
+                                    <field name="cancer_desc" colspan="4" attrs="{'invisible': [('cancer', '=', False)]}"/>
+                                    <field name="evc" colspan="2"/>
+                                    <field name="evc_desc" colspan="4" attrs="{'invisible': [('evc', '=', False)]}"/>
+                                    <field name="fracture" colspan="2"/>
+                                    <field name="fracture_desc" colspan="4" attrs="{'invisible': [('fracture', '=', False)]}"/>
+                                    <newline/>
+                                    <field name="childhood_diseases" colspan="4"/>
+                                    <newline/>
+                                    <field name="aftermath" colspan="4"/>
+                                    <newline/>
+                                    <field name="others_pathologies" colspan="4"/>
+                                </group>
+                            </page>
+                            <page string="Family Records">
+                                <group col="6" colspan="6">
+                                    <field name="diabetes_family" colspan="2"/>
+                                    <field name="diabetes_family_desc" colspan="2" attrs="{'invisible': [('diabetes_family', '=', False)]}"/>
+                                    <field name="diabetes_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('diabetes_family', '=', False)]}"/>
+                                    <field name="hipertension_family" colspan="2"/>
+                                    <field name="hipertension_family_desc" colspan="2" attrs="{'invisible': [('hipertension_family', '=', False)]}"/>
+                                    <field name="hipertension_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('hipertension_family', '=', False)]}"/>
+                                    <field name="cardiopathy_family" colspan="2"/>
+                                    <field name="cardiopathy_family_desc" colspan="2" attrs="{'invisible': [('cardiopathy_family', '=', False)]}"/>
+                                    <field name="cardiopathy_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('cardiopathy_family', '=', False)]}"/>
+                                    <field name="cancer_family" colspan="2"/>
+                                    <field name="cancer_family_desc" colspan="2" attrs="{'invisible': [('cancer_family', '=', False)]}"/>
+                                    <field name="cancer_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('cancer_family', '=', False)]}"/>
+                                    <field name="evc_family" colspan="2"/>
+                                    <field name="evc_family_desc" colspan="2" attrs="{'invisible': [('evc_family', '=', False)]}"/>
+                                    <field name="evc_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('evc_family', '=', False)]}"/>
+                                    <field name="alcoholism_family" colspan="2"/>
+                                    <field name="alcoholism_family_desc" colspan="2" attrs="{'invisible': [('alcoholism_family', '=', False)]}"/>
+                                    <field name="alcoholism_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('alcoholism_family', '=', False)]}"/>
+                                    <field name="drugs_family" colspan="2"/>
+                                    <field name="drugs_family_desc" colspan="2" attrs="{'invisible': [('drugs_family', '=', False)]}"/>
+                                    <field name="drugs_family_who" widget="many2many_tags" placeholder="Relative..." style="width: 80%" colspan="2" attrs="{'invisible': [('drugs_family', '=', False)]}"/>
+                                    <newline/>
+                                    <field name="others_family" colspan="6"/>
+                                </group>
+                            </page>
+                            <!-- PATIENT DISEASES -->
+                            <page string="Diseases">
+                                <separator string="Diseases" colspan="6"/>
+                                <field name="diseases" nolabel="1" widget="one2many_list" context="{'default_patient': active_id, 'add': True}">
+                                    <tree colors="red:disease_severity=='3_sv';orange:is_infectious">
+                                        <field name="name" select="1" invisible="1"/>
+                                        <field name="doctor" select="1" invisible="1"/>
+                                        <field name="status" string="Status"/>
+                                        <field name="is_active" string="Active"/>
+                                        <field name="disease_severity" string="Severity"/>
+                                        <field name="pregnancy_warning"/>
+                                        <field name="is_infectious"/>
+                                        <field name="diagnosed_date" string="Diagnosed"/>
+                                        <field name="healed_date" string="End"/>
+                                        <field name="diagnosis_type"/>
+                                        <field name="level"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Apparatus and Systems">
+                                <group col="6" colspan="6">
+                                    <field name="cardiovascular" colspan="2"/>
+                                    <field name="cardiovascular_desc" colspan="4" attrs="{'invisible': [('cardiovascular', '=', False)]}"/>
+                                    <field name="respiratory" colspan="2"/>
+                                    <field name="respiratory_desc" colspan="4" attrs="{'invisible': [('respiratory', '=', False)]}"/>
+                                    <field name="digestive" colspan="2"/>
+                                    <field name="digestive_desc" colspan="4" attrs="{'invisible': [('digestive', '=', False)]}"/>
+                                    <field name="urinary_reproductive" colspan="2"/>
+                                    <field name="urinary_reproductive_desc" colspan="4" attrs="{'invisible': [('urinary_reproductive', '=', False)]}"/>
+                                    <field name="endocrin" colspan="2"/>
+                                    <field name="endocrin_desc" colspan="4" attrs="{'invisible': [('endocrin', '=', False)]}"/>
+                                    <field name="neurologic" colspan="2"/>
+                                    <field name="neurologic_desc" colspan="4" attrs="{'invisible': [('neurologic', '=', False)]}"/>
+                                    <field name="skin_annex" colspan="2"/>
+                                    <field name="skin_annex_desc" colspan="4" attrs="{'invisible': [('skin_annex', '=', False)]}"/>
+                                    <field name="muscle_bony" colspan="2"/>
+                                    <field name="muscle_bony_desc" colspan="4" attrs="{'invisible': [('muscle_bony', '=', False)]}"/>
+                                    <field name="hematopoyetic_linfatic" colspan="2"/>
+                                    <field name="hematopoyetic_linfatic_desc" colspan="4" attrs="{'invisible': [('hematopoyetic_linfatic', '=', False)]}"/>
+                                </group>
+                            </page>
+                        </notebook>
+                    </page>
+                    <!-- PATIENT Evaluations -->
+                    <page string="Medical Care" name="medical_care">
+                        <separator string="Evaluations" colspan="6"/>
+                        <field name="evaluation_ids" colspan="4" nolabel="1" widget="one2many_list" context="{'default_name': active_id, 'add': True}">
+                            <tree colors="red:bmi&lt;=18 or bmi&gt;=25" string="Evaluations" default_order="evaluation_date desc">
+                                <field name="evaluation_date"/>
+                                <field name="doctor"/>
+                                <field name="chief_complaint"/>
+                                <field name="bmi"/>
+                                <field name="systolic"/>
+                                <field name="diastolic"/>
+                                <field name="diagnosis"/>
+                                <!--<field name="next_evaluation_date"></field>-->
+                                <field name="evaluation_type"/>
+                            </tree>
+                        </field>
+                    </page>
+                    <!-- PATIENT Medications -->
+                    <page string="Medication">
+                        <separator string="Medication" colspan="6"/>
+                        <field name="medications" string="Medication History" colspan="4" nolabel="1" widget="one2many_list" context="{'default_name': active_id, 'add': True}"/>
+                    </page>
+                    <!-- PATIENT Prescriptions -->
+                    <page string="Prescriptions" invisible="True">
+                        <separator string="Prescriptions" colspan="6"/>
+                        <field name="prescriptions" string="Prescriptions History" colspan="4" nolabel="1" widget="one2many_list"/>
+                    </page>
+                    <!-- PATIENT Immunizations -->
+                    <page string="Immunizations" name="immunizations">
+                        <separator string="Immunizations" colspan="6"/>
+                        <field name="vaccinations" string="Vaccinations History" colspan="4" nolabel="1" widget="one2many_list" context="{'default_name': active_id, 'add': True}"/>
+                    </page>
+                    <!-- PATIENT Depilation
+                    <page string="Depilations">
+                        <separator string="Depilations" colspan="6" />
+                        <field name="depilations_ids" colspan="4" nolabel="1"
+                            widget="one2many_list" />
+                    </page>  -->
+                    <!-- Patient Extra Information -->
+                    <page string="Extra Info" invisible="True">
+
+                    </page>
+                </xpath>
+            
