@@ -18,7 +18,7 @@ class Course(models.Model):
     Translates into a One2many relationship with Session data model -->
     session_ids = fields.One2many(
         'openacademy.session', 'course_id', string="Sessions")
-
+    
 <!-- Define Session data model -->    
 class Session(models.Model):
     _name = 'openacademy.session'
@@ -36,6 +36,10 @@ class Session(models.Model):
     Translates into a Many2one relationship with Course data model -->
     course_id = fields.Many2one('openacademy.course',
         ondelete='cascade', string="Course", required=True)
+    
+    <!-- A session has one or more attendees. An attendee has one or more sessions. 
+    Translates into a Many2many relationship with Session data model -->
+    attendee_ids = fields.Many2many('res.partner', string="Attendees")
     
 # class openacademy(models.Model):
 #     _name = 'openacademy.openacademy'
