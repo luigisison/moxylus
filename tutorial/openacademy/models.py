@@ -13,6 +13,11 @@ class Course(models.Model):
     Translates into a Many2one relationship with Resource Users data model -->
     responsible_id = fields.Many2one('res.users',
         ondelete='set null', string="Responsible", index=True)
+    
+    <!-- A course has a one or more sessions. 
+    Translates into a One2many relationship with Session data model -->
+    session_ids = fields.One2many(
+        'openacademy.session', 'course_id', string="Sessions")
 
 <!-- Define Session data model -->    
 class Session(models.Model):
