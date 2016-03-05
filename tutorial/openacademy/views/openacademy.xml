@@ -10,6 +10,13 @@
                 <search>
                     <field name="name"/>
                     <field name="description"/>
+                    <!-- Filter Courses for which the current user is responsible for -->
+                    <filter name="my_courses" string="My Courses"
+                            domain="[('responsible_id', '=', uid)]"/>
+                    <!-- Group Courses by responsible person -->
+                    <group string="Group By">
+                        <filter name="by_responsible" string="Responsible"
+                                context="{'group_by': 'responsible_id'}"/>
                 </search>
                 <form string="Course Form">
                     <sheet>
@@ -144,12 +151,25 @@
             </field>
         </record>
         
+        <!-- Create Session calendar view -->
+        <record model="ir.ui.view" id="session_calendar_view">
+            <field name="name">session.calendar</field>
+            <field name="model">openacademy.session</field>
+            <field name="arch" type="xml">
+                <calendar string="Session Calendar" date_start="start_date"
+                          date_stop="end_date"
+                          color="instructor_id">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+     
         <!-- Create Session action -->
         <record model="ir.actions.act_window" id="session_list_action">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">tree,form,calendar</field>
         </record>
 
         <!-- Create Session menu item -->
