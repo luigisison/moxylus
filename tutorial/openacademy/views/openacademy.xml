@@ -111,6 +111,7 @@
                                 <field name="name"/>
                                 <field name="instructor_id"/>
                                 <field name="active"/>
+                                <field name="taken_seats" widget="progressbar"/>
                             </group>
                             <group string="Schedule">
                                 <field name="start_date"/>
@@ -133,6 +134,7 @@
                 <tree string="Session Tree">
                     <field name="name"/>
                     <field name="course_id"/>
+                    field name="taken_seats" widget="progressbar"/>
                 </tree>
             </field>
         </record>
