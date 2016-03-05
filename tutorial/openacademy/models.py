@@ -19,6 +19,18 @@ class Course(models.Model):
     session_ids = fields.One2many(
         'openacademy.session', 'course_id', string="Sessions")
     
+    <!-- Check that the course title and the course description are different. -->
+     _sql_constraints = [
+        ('name_description_check',
+         'CHECK(name != description)',
+         "The title of the course should not be the description"),
+
+        <!-- Make the course name unique. -->
+        ('name_unique',
+         'UNIQUE(name)',
+         "The course title must be unique"),
+    ]
+    
 <!-- Define Session data model -->    
 class Session(models.Model):
     _name = 'openacademy.session'
