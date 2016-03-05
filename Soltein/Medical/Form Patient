@@ -1,0 +1,120 @@
+<?xml version="1.0"?><form string="Patient" version="7.0">
+                    <sheet>
+                        <field name="image" widget="image" class="oe_left oe_avatar" options="{&quot;preview_image&quot;: &quot;image_medium&quot;, &quot;size&quot;: [90, 90]}"/>
+                        <div class="oe_left">
+                            <label class="oe_edit_only" for="name" string="Name" colspan="4"/>
+                            <div class="oe_inline">
+                                <h2>
+                                    <field name="title" domain="[('domain', '=', 'contact')]" options="{&quot;no_open&quot;: True}" placeholder="Title" nolabel="1" colspan="1"/>
+                                    <field name="name" default_focus="1" placeholder="Name" nolabel="1" colspan="5"/>
+                                    <field name="lastname" placeholder="Last Name" required="1" nolabel="1" colspan="6"/>
+                                </h2>
+                            </div>
+                            <field name="category_id" widget="many2many_tags" placeholder="Tags..." colspan="6"/>
+                        </div>
+                        <div class="oe_right oe_button_box" name="buttons">
+                            <field name="customer" invisible="1"/>
+                            <field name="partner_id" invisible="1" required="0"/>
+                            <button class="oe_inline oe_stat_button" type="action" name="435" attrs="{'invisible': [('customer', '=', False)]}" icon="fa-strikethrough" context="{'search_default_partner_id': partner_id,'default_partner_id': partner_id}">
+                                <field string="Sales" name="sale_order_count" widget="statinfo"/>
+                            </button>
+                            <button type="action" class="oe_stat_button" id="invoice_button" icon="fa-pencil-square-o" name="276" attrs="{'invisible': [('customer', '=', False)]}" context="{'search_default_partner_id': partner_id,'default_partner_id': partner_id}">
+                                <div><strong><field name="total_invoiced" widget="monetary"/></strong><br/>Invoiced</div>
+                            </button>
+                            <button class="oe_inline oe_stat_button" type="object" name="schedule_appointment" icon="fa-calendar" context="{'partner_id': partner_id}">
+                                <field string="Appointments" name="appointment_count" widget="statinfo"/>
+                            </button>
+                            <button class="oe_inline oe_stat_button" type="action" attrs="{'invisible': [('customer', '=', False)]}" name="509" icon="fa-keyboard-o" context="{'search_default_name': active_id, 'default_name': active_id}" string="Recipes"/>
+                            <button class="oe_inline oe_stat_button" type="action" name="322" icon="fa-phone" context="{'search_default_partner_id': partner_id, 'default_duration': 1.0}">
+                                <field string="Calls" name="phonecall_count" widget="statinfo"/>
+                            </button>
+                        </div>
+                        <div class="oe_clear"/>
+                        <group>
+                            <group>
+                                <field name="dob" required="1" on_change="onchange_dob(dob,context)"/>
+                                <field name="age" on_change="onchange_age(dob,age,context)"/>
+                                <field name="nac" required="1" on_change="onchange_curp(curp,child_order,hc_type,context)"/>
+                                <field name="self_curp" attrs="{'invisible': [('hc_type','!=', 'p')]}"/>
+                                <field name="curp" required="1" on_change="onchange_curp(curp,child_order,hc_type,context)" attrs="{'required': [('hc_type','!=', 'p')]}"/>
+                            </group>
+                            <group>
+                                <field name="hc_type" required="1" on_change="onchange_curp(curp,child_order,hc_type,context)"/>
+                                <field name="patient_id"/>
+                                <field name="sex" required="1"/>
+                                <field name="child_order" on_change="onchange_curp(curp,child_order,hc_type,context)" attrs="{'required': [('hc_type','=', 'p')],'invisible': [('hc_type','=', 'a')]}"/>
+                            </group>
+                        </group>
+                        <notebook name="medical.patient.details">
+                            <page string="Personal Information">
+                                <group>
+                                    <group>
+                                        <field name="marital_status"/>
+                                        <label for="street" string="Address"/>
+                                        <div>
+                                            <field name="street" placeholder="Street..."/>
+                                            <div class="address_format">
+                                                <field name="corregimiento" placeholder="Corregimiento" style="width: 50%"/>
+                                                <field name="city" placeholder="City" style="width: 50%"/>
+                                                <field name="state_id" class="oe_no_button" placeholder="Province" options="{&quot;no_open&quot;: True}" on_change="onchange_state(state_id)" style="width: 50%"/>
+                                                <field name="country_id" placeholder="Country" class="oe_no_button" options="{&quot;no_open&quot;: True}" style="width: 50%"/>
+                                            </div>
+                                            <field name="zip" placeholder="ZIP"/>
+                                        </div>
+                                        <field name="religion"/>
+                                        <field name="ethnic_group"/>
+                                        <field name="born_country_id"/>
+                                    </group>
+                                    <group>
+                                        <field name="parent_id" placeholder="Work Center" context="{'default_is_company': True, 'external': True}" domain="[('is_company', '=', True)]"/>
+                                        <field name="function" placeholder="e.g. Sales Director"/>
+                                        <field name="phone" placeholder="e.g. +32.81.81.37.00"/>
+                                        <field name="mobile"/>
+                                        <field name="fax"/>
+                                        <field name="email" widget="email"/>
+                                        <field name="legal_tutor" string="Legal Guardian"/>
+                                        <field name="family_relationship"/>
+                                        <field name="phone_tutor"/>
+                                        <field name="emergency_contact"/>
+                                    </group>
+                                </group>
+                                <label for="comments"/>
+                                <field name="comments" placeholder="Comments"/>
+                            </page>
+                            <page string="General">
+                                <separator string="General info" colspan="6"/>
+                                <group colspan="4" col="4">
+                                    <field name="blood_type"/>
+                                    <field name="rh"/>
+                                    <field name="family_code"/>
+                                    <!-- domain="[('members_ids.id','=',partner_id)]" -->
+                                    <field name="primary_care_doctor"/>
+                                    <field name="origin"/>
+                                    <newline/>
+                                    <field name="deceased" readonly="True"/>
+                                    <field name="dod" attrs="{'invisible':[('deceased','=',False)],'required':[('deceased','=',True)]}"/>
+                                    <field name="cod" attrs="{'invisible':[('deceased','=',False)]}"/>
+                                </group>
+                                <group colspan="4" col="6">
+                                    <label for="container_id" string="Physical localization"/>
+                                    <field name="container_id" nolabel="1"/>
+                                </group>
+
+                                <!-- Patient Critical Information -->
+                                <newline/>
+                                <separator string="Patient Critical Information" colspan="6"/>
+                                <field colspan="6" name="critical_info" nolabel="1"/>
+                                <separator string="Extra Information" colspan="6"/>
+                                <field colspan="4" name="general_info" nolabel="1"/>
+                            </page>
+                            <!-- PATIENT Medical Insurance Information-->
+                            <page string="Medical Insurance" name="insurance">
+                                <field name="insurances" context="{'default_name':partner_id}"/>
+                            </page>
+                        </notebook>
+                    </sheet>
+                    <div name="message" class="oe_chatter">
+                        <field name="message_follower_ids" widget="mail_followers"/>
+                        <field name="message_ids" widget="mail_thread"/>
+                    </div>
+                </form>
