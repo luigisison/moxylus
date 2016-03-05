@@ -30,7 +30,8 @@ class Session(models.Model):
     
     <!-- A session has an instructor. 
     Translates into a Many2one relationship with Resource Partner data model -->
-    instructor_id = fields.Many2one('res.partner', string="Instructor")
+    instructor_id = fields.Many2one('res.partner', string="Instructor", 
+    domain=[('instructor', '=', True)])d)
     
     <!-- A session is related to a course. Conversely, a course has one or more sessions. 
     Translates into a Many2one relationship with Course data model -->
