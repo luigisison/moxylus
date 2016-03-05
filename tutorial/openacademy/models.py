@@ -78,6 +78,10 @@ class Session(models.Model):
     taken_seats = fields.Float(string="Taken seats", compute='_taken_seats')
     end_date = fields.Date(string="End Date", store=True,
         compute='_get_end_date', inverse='_set_end_date')
+        
+    <!-- Calculate Session duration in hours -->
+    hours = fields.Float(string="Duration in hours",
+                         compute='_get_hours', inverse='_set_hours')    
 
     <!-- Calculate percentage of taken seats -->
     @api.depends('seats', 'attendee_ids')
@@ -88,6 +92,15 @@ class Session(models.Model):
             else:
                 r.taken_seats = 100.0 * len(r.attendee_ids) / r.seats
     
+    @api.depends('duration')
+    def _get_hours(self):
+        for r in self:
+            r.hours = r.duration * 24
+
+    def _set_hours(self):
+        for r in self:
+            r.duration = r.hours / 24
+            
     <!-- Warn about invalid values for taken seats -->
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
