@@ -131,9 +131,14 @@
             <field name="name">session.tree</field>
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
-                <tree string="Session Tree">
+                
+                 <!-- Sessions lasting less than 5 days are colored sky blue.
+                Sessions lasting more than 15 days are colored red.
+                Colors: default=white, primary=blue, success=green, warning=orange-->
+                <tree string="Session Tree" decoration-info="duration&lt;5" decoration-danger="duration&gt;15">
                     <field name="name"/>
                     <field name="course_id"/>
+                    <field name="duration" invisible="1"/>
                     field name="taken_seats" widget="progressbar"/>
                 </tree>
             </field>
