@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from openerp import models, fields, api
+from openerp import models, fields, api, exceptions
 
 <!-- Define Course data model -->
 class Course(models.Model):
@@ -74,6 +74,13 @@ class Session(models.Model):
                 },
             }
 
+    <!-- Check that the instructor is not an attendee in their own class -->
+    @api.constrains('instructor_id', 'attendee_ids')
+    def _check_instructor_not_in_attendees(self):
+        for r in self:
+            if r.instructor_id and r.instructor_id in r.attendee_ids:
+                raise exceptions.ValidationError("A session's instructor can't be an attendee")
+                
 <!-- Model template -->
 # class openacademy(models.Model):
 #     _name = 'openacademy.openacademy'
