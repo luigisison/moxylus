@@ -1,0 +1,8 @@
+<-- Define OpenAcademy Manager group -->
+<openerp>
+    <data>
+        <record id="group_manager" model="res.groups">
+            <field name="name">OpenAcademy / Manager</field>
+        </record>
+    </data>
+</openerp>
