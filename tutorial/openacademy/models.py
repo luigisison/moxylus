@@ -58,6 +58,7 @@ class Session(models.Model):
     duration = fields.Float(digits=(6, 2), help="Duration in days")
     seats = fields.Integer(string="Number of seats")
     active = fields.Boolean(default=True)
+    color = fields.Integer()
     
     <!-- A session has an instructor. 
     Translates into a Many2one relationship with Resource Partner data model -->
@@ -81,8 +82,31 @@ class Session(models.Model):
         
     <!-- Calculate Session duration in hours -->
     hours = fields.Float(string="Duration in hours",
-                         compute='_get_hours', inverse='_set_hours')    
+                         compute='_get_hours', inverse='_set_hours')
+     
+    <!-- Calculate number of Attendees -->                    
+    attendees_count = fields.Integer(
+        string="Attendees count", compute='_get_attendees_count', store=True)
 
+    <!-- List states of a workflow -->
+    state = fields.Selection([
+        ('draft', "Draft"),
+        ('confirmed', "Confirmed"),
+        ('done', "Done"),
+    ], default='draft')
+
+    @api.multi
+    def action_draft(self):
+        self.state = 'draft'
+
+    @api.multi
+    def action_confirm(self):
+        self.state = 'confirmed'
+
+    @api.multi
+    def action_done(self):
+        self.state = 'done'
+        
     <!-- Calculate percentage of taken seats -->
     @api.depends('seats', 'attendee_ids')
     def _taken_seats(self):
@@ -91,16 +115,7 @@ class Session(models.Model):
                 r.taken_seats = 0.0
             else:
                 r.taken_seats = 100.0 * len(r.attendee_ids) / r.seats
-    
-    @api.depends('duration')
-    def _get_hours(self):
-        for r in self:
-            r.hours = r.duration * 24
-
-    def _set_hours(self):
-        for r in self:
-            r.duration = r.hours / 24
-            
+                
     <!-- Warn about invalid values for taken seats -->
     @api.onchange('seats', 'attendee_ids')
     def _verify_valid_seats(self):
@@ -144,6 +159,20 @@ class Session(models.Model):
             end_date = fields.Datetime.from_string(r.end_date)
             r.duration = (end_date - start_date).days + 1
 
+    @api.depends('duration')
+    def _get_hours(self):
+        for r in self:
+            r.hours = r.duration * 24
+
+    def _set_hours(self):
+        for r in self:
+            r.duration = r.hours / 24
+    
+    @api.depends('attendee_ids')
+    def _get_attendees_count(self):
+        for r in self:
+            r.attendees_count = len(r.attendee_ids)
+            
     <!-- Check that the instructor is not an attendee in their own class -->
     @api.constrains('instructor_id', 'attendee_ids')
     def _check_instructor_not_in_attendees(self):
