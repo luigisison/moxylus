@@ -107,6 +107,21 @@
             <field name="model">openacademy.session</field>
             <field name="arch" type="xml">
                 <form string="Session Form">
+                    
+                    <!-- Create buttons in Session form -->
+                    <header>
+                        <button name="draft" type="workflow"
+                                string="Reset to draft"
+                                states="confirmed,done"/>
+                        <button name="confirm" type="workflow"
+                                string="Confirm" states="draft"
+                                class="oe_highlight"/>
+                        <button name="done" type="workflow"
+                                string="Mark as done" states="confirmed"
+                                class="oe_highlight"/>
+                        <field name="state" widget="statusbar"/>
+                    </header>
+                    
                     <sheet>
                         <group>
                             <field name="name"/>
