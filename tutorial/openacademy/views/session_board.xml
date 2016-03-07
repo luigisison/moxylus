@@ -2,7 +2,7 @@
 <openerp>
     <data>
         
-        <!-- Define Graph -->
+        <!-- Define Graph action -->
         <record model="ir.actions.act_window" id="act_session_graph">
             <field name="name">Attendees by course</field>
             <field name="res_model">openacademy.session</field>
@@ -12,7 +12,7 @@
                    ref="openacademy.openacademy_session_graph_view"/>
         </record>
         
-        <!-- Define Calendar -->
+        <!-- Define Calendar action -->
         <record model="ir.actions.act_window" id="act_session_calendar">
             <field name="name">Sessions</field>
             <field name="res_model">openacademy.session</field>
@@ -21,7 +21,7 @@
             <field name="view_id" ref="openacademy.session_calendar_view"/>
         </record>
         
-        <!-- Define List switchable to Form view -->
+        <!-- Define List action switchable to Form action -->
         <record model="ir.actions.act_window" id="act_course_list">
             <field name="name">Courses</field>
             <field name="res_model">openacademy.course</field>
@@ -29,7 +29,7 @@
             <field name="view_mode">tree,form</field>
         </record>
         
-        <!-- Define Dashboard -->
+        <!-- Define Dashboard view -->
         <record model="ir.ui.view" id="board_session_form">
             <field name="name">Session Dashboard Form</field>
             <field name="model">board.board</field>
@@ -39,19 +39,19 @@
                     <!-- Available Available dashboard styles are 1, 1-1, 1-2, 2-1 and 1-1-1 -->
                     <board style="2-1">
                         <column>
-                            <!-- Display Graph View -->
+                            <!-- Display Graph -->
                             <action
                                 string="Attendees by course"
                                 name="%(act_session_graph)d"
                                 height="150"
                                 width="510"/>
-                            <!-- Display Calendar View -->
+                            <!-- Display Calendar -->
                             <action
                                 string="Sessions"
                                 name="%(act_session_calendar)d"/>
                         </column>
                         
-                        <!-- Display List View -->
+                        <!-- Display List -->
                         <column>
                             <action
                                 string="Courses"
@@ -61,6 +61,8 @@
                 </form>
             </field>
         </record>
+        
+        <!-- Define Dashboard action -->
         <record model="ir.actions.act_window" id="open_board_session">
           <field name="name">Session Dashboard</field>
           <field name="res_model">board.board</field>
@@ -70,6 +72,7 @@
           <field name="view_id" ref="board_session_form"/>
         </record>
 
+        <!-- Define Dashboard menu -->
         <menuitem
             name="Session Dashboard" parent="base.menu_reporting_dashboard"
             action="open_board_session"
