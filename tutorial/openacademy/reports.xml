@@ -1,5 +1,7 @@
 <openerp>
 <data>
+    <!-- Session report. Displays sessions name, its start and end date
+    and list of session's attendees. -->
     <report
         id="report_session"
         model="openacademy.session"
