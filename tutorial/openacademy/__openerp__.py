@@ -25,16 +25,8 @@
 
     # always loaded
     'data': [
-        # 'security/ir.model.access.csv',
-        'templates.xml',
-    ],
-    # only loaded in demonstration mode
-    'demo': [
-        'demo.xml',
-    ],
-}
-'data': [
-        # 'security/ir.model.access.csv',
+        'security/security.xml',
+        'security/ir.model.access.csv',
         'templates.xml',
         'views/openacademy.xml'
         'views/partner.xml',
@@ -42,3 +34,6 @@
     ],
     # only loaded in demonstration mode
     'demo': [
+        'demo.xml',
+    ],
+}
