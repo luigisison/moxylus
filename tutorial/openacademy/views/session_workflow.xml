@@ -6,6 +6,7 @@
             <field name="on_create">True</field>
         </record>
 
+        <!-- Define Draft server action -->
         <record model="ir.actions.server" id="set_session_to_draft">
             <field name="name">Set session to Draft</field>
             <field name="model_id" ref="model_openacademy_session"/>
@@ -14,17 +15,19 @@ model.search([('id', 'in', context['active_ids'])]).action_draft()
             </field>
         </record>
         
+        <!-- Define Draft workflow state -->
         <record model="workflow.activity" id="draft">
             <field name="name">Draft</field>
             <field name="wkf_id" ref="wkf_session"/>
             <field name="flow_start" eval="True"/>
-            <-- <field name="kind">function</field>
+            <!-- <field name="kind">function</field>
             <field name="action">action_draft()</field> -->
             <field name="kind">dummy</field>
             <field name="action"></field>
             <field name="action_id" ref="set_session_to_draft"/>
         </record>
 
+        <!-- Define Confirmed server action -->
         <record model="ir.actions.server" id="set_session_to_confirmed">
             <field name="name">Set session to Confirmed</field>
             <field name="model_id" ref="model_openacademy_session"/>
@@ -34,17 +37,18 @@ model.search([('id', 'in', context['active_ids'])]).action_confirm()
             <field name="action">action_draft()</field>
         </record>
         
+        <!-- Define Confirmed workflow state -->
         <record model="workflow.activity" id="confirmed">
             <field name="name">Confirmed</field>
             <field name="wkf_id" ref="wkf_session"/>
-            <field name="kind">dummy</field>
-            <-- client side code: <field name="action"></field>
-            <field name="action_id" ref="set_session_to_confirmed"/> -->
+            <!-- client side code: <field name="kind">function</field>
+            <field name="action">action_confirm()</field> -->
             <field name="kind">dummy</field>
             <field name="action"></field>
-            <field name="action_id" ref="set_session_to_done"/>
+            <field name="action_id" ref="set_session_to_confirmed"/>
         </record>
 
+        <!-- Define Done server action -->
         <record model="ir.actions.server" id="set_session_to_done">
             <field name="name">Set session to Done</field>
             <field name="model_id" ref="model_openacademy_session"/>
@@ -53,16 +57,18 @@ model.search([('id', 'in', context['active_ids'])]).action_done()
             </field>
         </record>
         
+        <!-- Define Done workflow state -->
         <record model="workflow.activity" id="done">
             <field name="name">Done</field>
             <field name="wkf_id" ref="wkf_session"/>
-            <-- <field name="kind">function</field>
+            <!-- <field name="kind">function</field>
             <field name="action">action_done()</field> -->
             <field name="kind">dummy</field>
             <field name="action"></field>
             <field name="action_id" ref="set_session_to_done"/>
         </record>
 
+        <!-- Define transitions -->
         <record model="workflow.transition" id="session_draft_to_confirmed">
             <field name="act_from" ref="draft"/>
             <field name="act_to" ref="confirmed"/>
