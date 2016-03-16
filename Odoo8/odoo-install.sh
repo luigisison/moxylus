@@ -11,6 +11,7 @@
 # cd /opt
 # Place this script in the directory:
 # sudo wget https://raw.githubusercontent.com/luigisison/moxylus/master/Odoo8/odoo-install.sh
+# Alternative script: https://raw.githubusercontent.com/aschenkels-ictstudio/odoo-install-scripts/8.0/ubuntu-14-04/odoo_install.sh
 # (Optional) Edit the file to change parameters:
 # sudo nano odoo-install.sh
 # Save changes and then make the file executable:
