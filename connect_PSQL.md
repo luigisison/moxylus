@@ -1,6 +1,6 @@
 #Connect to PostgreSQL with pgAdmin III via New Server Registration
 
-*Reference: http://www.mkfoster.com/2008/12/21/setting-up-postgresql-on-linux-and-connecting-using-pgadmin-iii/
+* Reference: http://www.mkfoster.com/2008/12/21/setting-up-postgresql-on-linux-and-connecting-using-pgadmin-iii/
 
 #Configure PostgreSQL Connection Settings
 *sudo nano /etc/postgresql/9.3/main/postgresql.conf
