@@ -1,3 +1,6 @@
+#Documentation: Using pgAdmin
+*http://www.pgadmin.org/docs/dev/main.html
+
 #Connect to PostgreSQL with pgAdmin III via New Server Registration
 
 * Reference: http://www.mkfoster.com/2008/12/21/setting-up-postgresql-on-linux-and-connecting-using-pgadmin-iii/
@@ -10,7 +13,7 @@
 * sudo /etc/init.d/postgresql restart
 
 #Grant users remote access
-* sudo nano /etc/postgresql/9.3/main/pg_hba.conf
+* *sudo nano /etc/postgresql/9.3/main/pg_hba.conf*
 * Add: host all all 10.0.0.0/16 md5
 * local all postgres trust
 * Comment the ff two lines with a "#" character
