@@ -1,8 +1,8 @@
 #Documentation: Using pgAdmin
-*http://www.pgadmin.org/docs/dev/main.html
+* http://www.pgadmin.org/docs/dev/main.html
+* Markdown cheat sheet: https://gist.github.com/dupuy/1855764
 
 #Connect to PostgreSQL with pgAdmin III via New Server Registration
-
 * Reference: http://www.mkfoster.com/2008/12/21/setting-up-postgresql-on-linux-and-connecting-using-pgadmin-iii/
 
 #Configure PostgreSQL Connection Settings
