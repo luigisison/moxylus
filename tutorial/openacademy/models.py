@@ -53,12 +53,17 @@ class Course(models.Model):
 class Session(models.Model):
     _name = 'openacademy.session'
 
-    name = fields.Char(required=True)
-    start_date = fields.Date(default=fields.Date.today)
-    duration = fields.Float(digits=(6, 2), help="Duration in days")
+    name = fields.Char(string="Session Name", required=True)
+    start_date = fields.Datetime(string="Start Date", default=fields.Datetime.now)
+    end_date = fields.Datetime(string"End Date")
+    duration = fields.Float(string="Duration", digits=(6, 2), help="Duration in days")
+    max_seat = fields.Integer(string="Maximum Available Seats", default=10)
+    min_seat = fields.Integer(string="Minimum Available Seats", default=1)
     seats = fields.Integer(string="Number of seats")
     active = fields.Boolean(default=True)
     color = fields.Integer()
+    notes = fields.Html(string="Notes")
+    banner = fields.Binary(string=Event Banner")
     
     <!-- A session has an instructor. 
     Translates into a Many2one relationship with Resource Partner data model -->
