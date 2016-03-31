@@ -37,7 +37,7 @@ import wizards
             <field name="model">openacademy.course</field>
 ```
 ###CSV Code Block
-```CSV
+```{.table aligns="LCR" caption="This is the **caption**" header="yes"}
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_openacademy_course_user,access_openacademy_course_user,model_openacademy_course,group_openacademy_user,1,0,0,0
 access_openacademy_session_user,access_openacademy_session_user,model_openacademy_session,group_openacademy_user,1,0,1,0
