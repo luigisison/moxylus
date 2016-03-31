@@ -6,7 +6,7 @@
 
 ##Global setup:
 * Download and install [Git]
-* Open Git Shell
+* In Git Shell
 ```
 git config --global user.name "Luigi Sison"
 git config --global user.emal lsison@moxylus.com
