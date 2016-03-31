@@ -3,7 +3,7 @@
 * Writing on GitHub/[Basic writing and formatting syntax] (https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * Writing on GitHub/[Organizing information with tables] (https://help.github.com/articles/organizing-information-with-tables/)
 
-| Header1 | Header2 | 
-| --- | --- |
-| Content 1,1 | Content 1,2 xxxxxxxx |
-| Content 2,1 etc. | Content 2,2 long form |
+| Done | Header1 | Header2 | 
+| --- | --- | --- |
+| [ ] | Content 1,1 | Content 1,2 xxxxxxxx |
+| [ ] | Content 2,1 etc. | Content 2,2 long form |
