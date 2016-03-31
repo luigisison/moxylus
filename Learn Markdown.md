@@ -36,9 +36,4 @@ import wizards
             <field name="name">OpenAcademy Course Form View</field>
             <field name="model">openacademy.course</field>
 ```
-###CSV Code Block
-```csv
-Fruit, Quantity, Price  
-apples, 15, 3.24  
-oranges, 12, 2.22  
-```
+
