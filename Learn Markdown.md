@@ -3,6 +3,8 @@
 * Writing on GitHub/[Basic writing and formatting syntax] (https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * Writing on GitHub/[Organizing information with tables] (https://help.github.com/articles/organizing-information-with-tables/)
 
+##Markdown Examples
+
 ###Table
 | Header | Header | 
 | --- | --- |
