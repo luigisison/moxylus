@@ -21,3 +21,11 @@ git status
 git add
 git commit
 ```
+
+###Python Code Block
+```python
+# -*- coding: utf-8 -*-
+
+import models
+import wizards
+```
