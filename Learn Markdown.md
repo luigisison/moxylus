@@ -29,3 +29,10 @@ git commit
 import models
 import wizards
 ```
+###XML Code Block
+```XML
+<!-- Course Form View -->
+        <record model="ir.ui.view" id="view_openacademy_course_form">
+            <field name="name">OpenAcademy Course Form View</field>
+            <field name="model">openacademy.course</field>
+```
