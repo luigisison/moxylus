@@ -5,5 +5,5 @@
 
 | Done | Header1 | Header2 | 
 | --- | --- | --- |
-| [] | Content 1,1 | Content 1,2 xxxxxxxx |
-| [] | Content 2,1 etc. | Content 2,2 long form |
+|- [x] | Content 1,1 | Content 1,2 xxxxxxxx |
+|- [x] | Content 2,1 etc. | Content 2,2 long form |
