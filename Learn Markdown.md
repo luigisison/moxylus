@@ -37,7 +37,7 @@ import wizards
             <field name="model">openacademy.course</field>
 ```
 ###CSV Code Block
-```{.table aligns="LCR" caption="This is the **caption**" header="yes"}  
+```csv
 Fruit, Quantity, Price  
 apples, 15, 3.24  
 oranges, 12, 2.22  
