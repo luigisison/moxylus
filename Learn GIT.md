@@ -7,7 +7,7 @@
 
 ##Global setup:
 * Download and install [Git]
-* In Git Shell
+* In Git Shell or Git Bash
 ```
 git config --global user.name "Luigi Sison"
 git config --global user.emal lsison@moxylus.com
@@ -20,6 +20,7 @@ cd /odoo/custom/addons
 sudo git clone --depth 1 REMOTE URL (like https://github.com/luigisison/vendor-consignment)
 ```
 ##References
+* [GitHub Help] (https://help.github.com/) Very useful!
 * [Official Documentation] (https://git-scm.com/documentation)
 * [Good Resources for Learning Git and GitHub] (https://help.github.com/articles/good-resources-for-learning-git-and-github/)
 * Book: [Pro Git] (https://git-scm.com/book/en/v2)
