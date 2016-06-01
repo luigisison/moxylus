@@ -87,3 +87,7 @@ dashboard_graph
 widgetonbutton
 
 many2many_tags_email
+
+```
+<field name"sensitive_field" password="True" >
+```
