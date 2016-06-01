@@ -1,4 +1,5 @@
 [Enterprise widget] (https://github.com/odoo/enterprise/tree/9.0/web/static/src/js/widgets)
+
 [Community widget] (https://github.com/odoo/odoo/tree/9.0/addons/web/static/src/js/widgets)
 
 mask
