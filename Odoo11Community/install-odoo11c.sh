@@ -5,7 +5,7 @@
 # Original Source: http://www.odoo.yenthevg.com/installing-odoo-9-on-ubuntu-14-04/
 # Additional Source: https://webkul.com/blog/install-odoo11-on-ubuntu/
 #-------------------------------------------------------------------------------
-# This script will install Odoo Community on your Ubuntu 14.04 server.
+# This script will install Odoo Community on your Ubuntu 16.04 server.
 # It can install multiple Odoo instances in one Ubuntu because of the different xmlrpc_ports.
 #-------------------------------------------------------------------------------
 # Go to Ubuntu directory where you want to install the software. For example:
@@ -16,9 +16,8 @@
 # sudo nano install-odoo11c.sh
 # Save changes and then make the file executable:
 # sudo chmod +x install-odoo11c.sh
-# Execute the odoo11c.sh
-########################script to install Odoo:
-# ./install-########################################################
+# Execute the script to install Odoo:
+# ./install-odoo11c.sh
 
 ##fixed parameters
 #odoo
@@ -99,16 +98,16 @@ sudo su - postgres -c "createuser -s $OE_USER" 2> /dev/null || true
 #--------------------------------------------------
 
 echo -e "\n---- Install tool packages ----"
-sudo apt-get install python3-pip
+sudo apt-get -y install python3-pip
 
 echo -e "\n---- Install python packages ----"
 sudo pip3 install Babel decorator docutils ebaysdk feedparser gevent greenlet html2text Jinja2 lxml \
 Mako MarkupSafe mock num2words ofxparse passlib Pillow psutil psycogreen psycopg2 pydot pyparsing \
 PyPDF2 pyserial python-dateutil python-openid pytz pyusb PyYAML qrcode reportlab requests six  \
-suds-jurko vatnumber vobject Werkzeug XlsxWriter xlwt xlrd
+suds-jurko vatnumber vobject Werkzeug XlsxWriter xlwt xlrd -h
 
 echo -e "\n--- Install other required packages ----"
-sudo apt-get install npm -y
+sudo apt-get install -y npm
 sudo ln -s /usr/bin/nodejs /usr/bin/node
 sudo npm install -g less less-plugin-clean-css
 sudo apt-get install node-less -y
