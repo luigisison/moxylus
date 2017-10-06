@@ -18,7 +18,7 @@
 #Choose the GitHub version which you want to install.
 OE_VERSION="2.9.5"
 #set your GitHub Account
-OE_USER=`"Luigi Sison"`
+OE_USER=\”Luigi Sison\”
 OE_USER_EMAIL="lsison@moxylus.com"
 
 #--------------------------------------------------
