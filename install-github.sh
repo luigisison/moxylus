@@ -35,10 +35,10 @@ cd git-*
 sudo make prefix=/usr/local install
 
 echo -e "\n---- Register GitHub account ----"
-git config --global user.name $OE_USER
+git config --global user.name "Luigi Sison"
 git config --global user.email $OE_USER_EMAIL
 git config --list
 
 echo "Done! Your GitHub Account is set up. Specifications:"
-echo "User Name: $OE_USER"
+echo "User Name: Luigi Sison"
 echo "User service: $OE_USER_EMAIL"
