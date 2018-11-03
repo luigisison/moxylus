@@ -1,11 +1,13 @@
 #!/bin/bash
 ################################################################################
 # Script for installing Odoo on Ubuntu 14.04, 15.04, 16.04 and 18.04 (could be used for other version too)
-# Author: Yenthe Van Ginneken
-#-------------------------------------------------------------------------------
+# Author: Yenthe Van Ginneken, André Schenkels
+#------------------------------------------------------------------------------- 
 # This script will install Odoo on your Ubuntu 16.04 server. It can install multiple Odoo instances
 # in one Ubuntu because of the different xmlrpc_ports
 #-------------------------------------------------------------------------------
+# Download script
+# sudo wget https://raw.githubusercontent.com/Yenthe666/InstallScript/12.0/odoo_install.sh
 # Make a new file:
 # sudo nano odoo_install.sh
 # Place this content in it and then make the file executable:
